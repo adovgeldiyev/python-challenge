@@ -1,6 +1,7 @@
 # Azat Dovgeldiyev
 #I have not given or received any unauthorized assistance on this assignment.
 import os
+import sys
 import csv
 
 budget_csv = os.path.join("..","Resources","budget_data.csv")
@@ -33,4 +34,13 @@ print("Average Change: ${}".format(avgChange))
 print("Greatest Increase in Profits: {}, (${})".format(maxDate,maxIncrease))
 print("Greatest Decrease in Profits: {}, (${})".format(minDate,maxDecrease))
 
-
+output_file=os.path.join("budget_final.txt")
+sys.stdout=open(output_file,"w")
+print("Financial Analysis")
+print("--------------------------------\n")
+print("Total Months: {}".format(totalMonths))
+print("Total: ${}".format(profitLos))
+print("Average Change: ${}".format(avgChange))
+print("Greatest Increase in Profits: {}, (${})".format(maxDate,maxIncrease))
+print("Greatest Decrease in Profits: {}, (${})".format(minDate,maxDecrease))
+sys.stdout.close()

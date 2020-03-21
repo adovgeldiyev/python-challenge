@@ -1,6 +1,7 @@
 # Azat Dovgeldiyev
 #I have not given or received any unauthorized assistance on this assignment.
 import os
+import sys
 import csv
 election_csv=os.path.join("..","Resources","election_data.csv")
 cand=[]#creating list to manipulate with string obj
@@ -24,3 +25,15 @@ with open(election_csv,"r") as csvfile:
         p=round(d[key]/totVotes*100,2)#finding percent dividing each cand's vote to total,round to 2 digits     
         print("{}: {}% with total of {} votes".format(key,p,d[key]))
     print("Winner: {}".format(max(d,key=d.get)))
+
+output_file=os.path.join("election_final.txt")
+sys.stdout=open(output_file,"w")
+print("Election Results")
+print("--------------------------------\n")
+print("Total Votes: {}".format(totVotes)) 
+for key in list(d.keys()):
+    p=round(d[key]/totVotes*100,2)#finding percent dividing each cand's vote to total,round to 2 digits     
+    print("{}: {}% with total of {} votes".format(key,p,d[key]))
+print("Winner: {}".format(max(d,key=d.get)))
+
+sys.stdout.close()
